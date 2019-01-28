@@ -28,7 +28,7 @@ def test_broadcast_message(message):
          broadcast=True)
 
 
-@socketio.on('join')
+@socketio.on('join', namespace='/test')
 def on_join(data):
     username = data['username']
     room = data['room']

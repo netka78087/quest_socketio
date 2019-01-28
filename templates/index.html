@@ -32,7 +32,7 @@
             // to the client. The data is then displayed in the "Received"
             // section of the page.
             socket.on('my_response', function(msg) {
-                $('#log').append('<br>' + $('<div/>').text('Received: ' + msg.data).html());
+                $('#log').append('<br>' + $('<div/>').text('Received: ' + msg).html());
             });
 
             // Handlers for the different forms in the page.
@@ -47,7 +47,7 @@
                 return false;
             });
             $('form#join').submit(function(event) {
-                socket.emit('join', {username: $('User_name').val(), room: $('#join_room').val()});
+                socket.emit('join', {username: $('#User_name').val(), room: $('#join_room').val()});
                 return false;
             });
         });
@@ -56,8 +56,6 @@
 <body>
     <form id="join" method="POST" action='#'>
         <input type="text" name="User_name" id="User_name" placeholder="User Name">
-    </form>
-    <form id="join" method="POST" action='#'>
         <input type="text" name="join_room" id="join_room" placeholder="Room Name">
         <input type="submit" value="Join Room">
     </form>
